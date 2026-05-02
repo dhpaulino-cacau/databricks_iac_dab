@@ -1,0 +1,96 @@
+# yaml-language-server: $schema=.databricks-bundle-schema.json
+bundle:
+  name: databricks_iac_dab
+  uuid: 5bed814a-40af-4e4b-808f-45f14e8fd48d
+  engine: direct
+
+include:
+  - resources/*.yml
+  - resources/*/*.yml
+
+permissions:
+  - group_name: ${var.group_engenheiros_de_dados}
+    level: CAN_VIEW
+  - group_name: ${var.group_analistas_de_dados}
+    level: CAN_VIEW
+  - group_name: ${var.group_cientistas_de_dados}
+    level: CAN_VIEW
+  - group_name: ${var.group_qualidade_de_dados}
+    level: CAN_VIEW
+  - group_name: ${var.group_brq}
+    level: CAN_MANAGE
+  - group_name: ${var.group_admin_engenheiros_de_dados}
+    level: CAN_MANAGE
+# Variable declarations. These variables are assigned in the dev/prod targets below.
+variables:
+  catalog:
+    description: The catalog to use
+  schema:
+    description: The schema to use
+  environment:
+    description: The environment to deploy to
+  raw_catalog:
+    description: The raw catalog to use
+  svo_catalog:
+    description: The svo catalog to use
+  brz_catalog:
+    description: The brz catalog to use
+  slv_catalog:
+    description: The slv catalog to use
+  gld_catalog:
+    description: The gld catalog to use
+  bic_catalog:
+    description: The bic catalog to use
+  deploy_service_principal_id:
+    description: The service principal ID to deploy the bundles with
+  group_engenheiros_de_dados:
+    description: The name of the Engenheiros de Dados group in Databricks
+    default: Data Engineer
+  group_analistas_de_dados:
+    description: The name of the Analistas de Dados group in Databricks
+    default: Data Analytics
+  group_cientistas_de_dados:
+    description: The name of the Cientistas de Dados group in Databricks
+    default: Data Scientist
+  group_qualidade_de_dados:
+    description: The name of the Qualidade de Dados group in Databricks
+    default: Data Quality
+  group_data_e_insights:
+    description: The name of the Data & Insights group in Databricks
+    default: Data & Insights
+  group_admin_engenheiros_de_dados:
+    description: The name of the Admin Engenheiros group in Databricks
+    default: admin_engenheiros_de_dados
+  group_brq:
+    description: The name of the BRQ group in Databricks
+    default: Big Data BRQ
+
+targets:
+  dev:
+    mode: production
+    default: true
+    workspace:
+      host: https://adb-1218127359024308.8.azuredatabricks.net
+      root_path: /Workspace/${bundle.target}/bundles/${bundle.name}
+    variables:
+      catalog: az_databricks_bigdata_dev
+      schema: ${workspace.current_user.short_name}
+      environment: ${bundle.target}
+      raw_catalog: dab_${var.environment}_raw
+      svo_catalog: dab_${var.environment}_svo
+      brz_catalog: dab_${var.environment}_brz
+      slv_catalog: dab_${var.environment}_slv
+      gld_catalog: dab_${var.environment}_gld
+      bic_catalog: dab_${var.environment}_bic
+      deploy_service_principal_id:
+        lookup:
+          service_principal: "BIGDATA_DEV_CICD_SP"
+    permissions:
+      - group_name: ${var.group_engenheiros_de_dados}
+        level: CAN_MANAGE
+      - group_name: ${var.group_cientistas_de_dados}
+        level: CAN_MANAGE
+      - group_name: ${var.group_admin_engenheiros_de_dados}
+        level: CAN_MANAGE
+      - service_principal_name: ${var.deploy_service_principal_id}
+        level: CAN_MANAGE
