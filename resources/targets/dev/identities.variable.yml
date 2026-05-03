@@ -1,0 +1,29 @@
+targets:
+  dev:
+    variables:
+      # Service principals
+      deploy_service_principal_id:
+        lookup:
+          service_principal: "BIGDATA_DEV_CICD_SP"
+      # Groups
+      group_engenheiros_de_dados:
+        description: The name of the Engenheiros de Dados group in Databricks
+        default: Data Engineer
+      group_analistas_de_dados:
+        description: The name of the Analistas de Dados group in Databricks
+        default: Data Analytics
+      group_cientistas_de_dados:
+        description: The name of the Cientistas de Dados group in Databricks
+        default: Data Scientist
+      group_qualidade_de_dados:
+        description: The name of the Qualidade de Dados group in Databricks
+        default: Data Quality
+      group_data_e_insights:
+        description: The name of the Data & Insights group in Databricks
+        default: Data & Insights
+      group_admin_engenheiros_de_dados:
+        description: The name of the Admin Engenheiros group in Databricks
+        default: admin_engenheiros_de_dados
+      group_brq:
+        description: The name of the BRQ group in Databricks
+        default: Big Data BRQ

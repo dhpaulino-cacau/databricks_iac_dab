@@ -7,6 +7,7 @@ bundle:
 include:
   - resources/*.yml
   - resources/*/*.yml
+  - resources/*/*/*.yml
 
 permissions:
   - group_name: ${var.group_engenheiros_de_dados}
@@ -41,8 +42,8 @@ variables:
     description: The gld catalog to use
   bic_catalog:
     description: The bic catalog to use
-  deploy_service_principal_id:
-    description: The service principal ID to deploy the bundles with
+  governance_catalog:
+    description: The governance catalog to use
   group_engenheiros_de_dados:
     description: The name of the Engenheiros de Dados group in Databricks
     default: Data Engineer
@@ -64,6 +65,8 @@ variables:
   group_brq:
     description: The name of the BRQ group in Databricks
     default: Big Data BRQ
+  deploy_service_principal_id:
+    description: The service principal ID to deploy the bundles with
 
 targets:
   dev:
@@ -73,18 +76,7 @@ targets:
       host: https://adb-1218127359024308.8.azuredatabricks.net
       root_path: /Workspace/${bundle.target}/bundles/${bundle.name}
     variables:
-      catalog: az_databricks_bigdata_dev
-      schema: ${workspace.current_user.short_name}
       environment: ${bundle.target}
-      raw_catalog: dab_${var.environment}_raw
-      svo_catalog: dab_${var.environment}_svo
-      brz_catalog: dab_${var.environment}_brz
-      slv_catalog: dab_${var.environment}_slv
-      gld_catalog: dab_${var.environment}_gld
-      bic_catalog: dab_${var.environment}_bic
-      deploy_service_principal_id:
-        lookup:
-          service_principal: "BIGDATA_DEV_CICD_SP"
     permissions:
       - group_name: ${var.group_engenheiros_de_dados}
         level: CAN_MANAGE

@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=../../.databricks-bundle-schema.json
+resources:
+  catalogs:
+    governance_catalog:
+      name: "${var.governance_catalog}"
+      comment: "Catálogo com dados da origem sem transformações para o ambiente de
+        desenvolvimento."
+      storage_root: "abfss://unity-catalog-storage@dbstoragez3ckciou7sptu.dfs.core.wi\
+        ndows.net/1218127359024308/"
+      grants:
+        - principal: "${var.group_engenheiros_de_dados}"
+          privileges:
+            - MANAGE
+        - principal: "${var.group_cientistas_de_dados}"
+          privileges:
+            - MANAGE
+        - principal: "${var.group_brq}"
+          privileges:
+            - MANAGE
+        - principal: "${var.group_analistas_de_dados}"
+          privileges:
+            - USE_CATALOG
+            - USE_SCHEMA
+            - BROWSE
+            - EXECUTE
+            - READ_VOLUME
+            - SELECT
+        - principal: "${var.group_qualidade_de_dados}"
+          privileges:
+            - USE_CATALOG
+            - USE_SCHEMA
+            - BROWSE
+            - EXECUTE
+            - READ_VOLUME
+            - SELECT
