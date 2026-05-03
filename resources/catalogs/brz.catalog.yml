@@ -8,7 +8,28 @@ resources:
       storage_root: "abfss://unity-catalog-storage@dbstoragez3ckciou7sptu.dfs.core.wi\
         ndows.net/1218127359024308/"
       grants:
-        - principal: "davissonpaulino.brq@cacaushow.com.br"
+        - principal: "${var.group_engenheiros_de_dados}"
+          privileges:
+            - MANAGE
+        - principal: "${var.group_cientistas_de_dados}"
+          privileges:
+            - MANAGE
+        - principal: "${var.group_brq}"
+          privileges:
+            - MANAGE
+        - principal: "${var.group_analistas_de_dados}"
           privileges:
             - USE_CATALOG
-            - CREATE_SCHEMA
+            - USE_SCHEMA
+            - BROWSE
+            - EXECUTE
+            - READ_VOLUME
+            - SELECT
+        - principal: "${var.group_qualidade_de_dados}"
+          privileges:
+            - USE_CATALOG
+            - USE_SCHEMA
+            - BROWSE
+            - EXECUTE
+            - READ_VOLUME
+            - SELECT

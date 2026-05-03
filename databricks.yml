@@ -92,5 +92,7 @@ targets:
         level: CAN_MANAGE
       - group_name: ${var.group_admin_engenheiros_de_dados}
         level: CAN_MANAGE
+      - group_name: ${var.group_brq}
+        level: CAN_MANAGE
       - service_principal_name: ${var.deploy_service_principal_id}
         level: CAN_MANAGE
