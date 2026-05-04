@@ -1,0 +1,7 @@
+resources:
+  volumes:
+    portal_area_dados_volume:
+      name: "${var.portal_area_dados_volume}"
+      comment: Volume para armazenar arquivos usados no portal de dados
+      catalog_name: "${resources.catalogs.governance_catalog.name}"
+      schema_name: "${resources.schemas.portal_area_dados_schema.name}"

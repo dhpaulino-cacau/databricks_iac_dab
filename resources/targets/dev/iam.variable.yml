@@ -27,3 +27,35 @@ targets:
       group_brq:
         description: The name of the BRQ group in Databricks
         default: Big Data BRQ
+      # catalogs
+      default_uc_grants_for_environment:
+        type: complex
+        default:
+          - principal: "${var.group_engenheiros_de_dados}"
+            privileges:
+              - MANAGE
+              - ALL_PRIVILEGES
+          - principal: "${var.group_cientistas_de_dados}"
+            privileges:
+              - MANAGE
+              - ALL_PRIVILEGES
+          - principal: "${var.group_brq}"
+            privileges:
+              - MANAGE
+              - ALL_PRIVILEGES
+          - principal: "${var.group_analistas_de_dados}"
+            privileges:
+              - USE_CATALOG
+              - USE_SCHEMA
+              - BROWSE
+              - EXECUTE
+              - READ_VOLUME
+              - SELECT
+          - principal: "${var.group_qualidade_de_dados}"
+            privileges:
+              - USE_CATALOG
+              - USE_SCHEMA
+              - BROWSE
+              - EXECUTE
+              - READ_VOLUME
+              - SELECT

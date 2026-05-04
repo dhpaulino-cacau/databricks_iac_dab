@@ -10,3 +10,5 @@ targets:
       gld_catalog: dab_${var.environment}_gld
       bic_catalog: dab_${var.environment}_bic
       governance_catalog: ${var.environment}_governance
+      default_storage_root: "abfss://unity-catalog-storage@dbstoragez3ckciou7sptu.dfs\
+        .core.windows.net/1218127359024308/" # TODO: use lookup insted of hardcoding the storage root

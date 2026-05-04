@@ -24,49 +24,8 @@ permissions:
     level: CAN_MANAGE
 # Variable declarations. These variables are assigned in the dev/prod targets below.
 variables:
-  catalog:
-    description: The catalog to use
-  schema:
-    description: The schema to use
   environment:
     description: The environment to deploy to
-  raw_catalog:
-    description: The raw catalog to use
-  svo_catalog:
-    description: The svo catalog to use
-  brz_catalog:
-    description: The brz catalog to use
-  slv_catalog:
-    description: The slv catalog to use
-  gld_catalog:
-    description: The gld catalog to use
-  bic_catalog:
-    description: The bic catalog to use
-  governance_catalog:
-    description: The governance catalog to use
-  group_engenheiros_de_dados:
-    description: The name of the Engenheiros de Dados group in Databricks
-    default: Data Engineer
-  group_analistas_de_dados:
-    description: The name of the Analistas de Dados group in Databricks
-    default: Data Analytics
-  group_cientistas_de_dados:
-    description: The name of the Cientistas de Dados group in Databricks
-    default: Data Scientist
-  group_qualidade_de_dados:
-    description: The name of the Qualidade de Dados group in Databricks
-    default: Data Quality
-  group_data_e_insights:
-    description: The name of the Data & Insights group in Databricks
-    default: Data & Insights
-  group_admin_engenheiros_de_dados:
-    description: The name of the Admin Engenheiros group in Databricks
-    default: admin_engenheiros_de_dados
-  group_brq:
-    description: The name of the BRQ group in Databricks
-    default: Big Data BRQ
-  deploy_service_principal_id:
-    description: The service principal ID to deploy the bundles with
 
 targets:
   dev:

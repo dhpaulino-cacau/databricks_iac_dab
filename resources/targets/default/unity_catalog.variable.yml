@@ -1,0 +1,33 @@
+variables:
+  # Catalogs
+  catalog:
+    description: The catalog to use
+  raw_catalog:
+    description: The raw catalog to use
+  svo_catalog:
+    description: The svo catalog to use
+  brz_catalog:
+    description: The brz catalog to use
+  slv_catalog:
+    description: The slv catalog to use
+  gld_catalog:
+    description: The gld catalog to use
+  bic_catalog:
+    description: The bic catalog to use
+  governance_catalog:
+    description: The governance catalog to use
+  default_storage_root:
+    description: The default storage root to use for all catalogs in the current environment
+
+  # Schemas
+  schema:
+    description: The schema to use
+
+  portal_area_dados_schema:
+    description: The schema to use for the portal area dados
+    default: "portal_area_dados"
+
+  # Volumes
+  portal_area_dados_volume:
+    description: The volume to use for the portal area dados
+    default: "files"

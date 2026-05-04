@@ -1,0 +1,6 @@
+resources:
+  schemas:
+    portal_area_dados_schema:
+      name: "${var.portal_area_dados_schema}"
+      comment: Esquema para armazenar os dados usados no portal de dados
+      catalog_name: "${resources.catalogs.governance_catalog.name}"
